@@ -1,12 +1,14 @@
 // Endpoint for querying the fibonacci numbers
 
+import { Request, Response } from "express";
 import fibonacci from "./fib";
 
 export default (req: Request, res: Response) => {
-  const num: string = req.params.num;
+  const num: string = req.params.num;  // Explicitly type num as string
 
   const parsedNum = parseInt(num, 10);
-  if (isNaN(parsedNum)){
+
+  if (isNaN(parsedNum)) {
     res.status(400).send("Invalid number format");
     return;
   }
@@ -20,3 +22,4 @@ export default (req: Request, res: Response) => {
 
   res.send(result);
 };
+
